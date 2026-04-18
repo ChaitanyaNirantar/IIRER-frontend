@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import EmailSearchDropdown from "./EmailSearchDropdown";
 import "./Employee.css";
+import api from "./api";
 
 function CIEForm() {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -44,7 +45,7 @@ function CIEForm() {
 
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/ciemployment", payload);
+      const response = await api.post("/api/users/ciemployment", payload);
       console.log("CIE Employment Response:", response.data);
       alert("CIE Employment submitted successfully!");
 
