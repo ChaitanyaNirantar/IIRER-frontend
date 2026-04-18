@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import api from "./api";
 
 function PdfUploadPage() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -22,7 +23,7 @@ function PdfUploadPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.post(
+      const response = await api.post(
         "/upload-pdf",
         formData,
         {
@@ -49,7 +50,7 @@ function PdfUploadPage() {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.get(
+      const response = await api.get(
         `/api/users/pdf/${pdfId}`,
         {
           responseType: "blob",
