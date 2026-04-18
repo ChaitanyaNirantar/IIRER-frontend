@@ -6,6 +6,7 @@ import EmployeeForm from "./EmployeeForm";
 import DRSClosureForm from "./DRSClosureForm";
 import CIEForm from "./CIEForm";
 import EmailSearchPage from "./EmailSearchPage";
+import PdfUploadPage from "./PdfUploadPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/email-search" element={<EmailSearchPage />} />
         <Route path="/cie-form" element={<CIEForm />} />
         <Route path="/drs-closure" element={<DRSClosureForm />} />
+        <Route path="/pdf-upload" element={<PdfUploadPage />} />
       </Routes>
     </BrowserRouter>
   );

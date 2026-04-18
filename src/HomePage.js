@@ -52,6 +52,12 @@ function HomePage() {
           >
             AT Closure
           </button>
+          <button
+  style={styles.button}
+  onClick={() => navigate("/pdf-upload")}
+>
+  PDF Upload
+</button>
         </div>
 
         <button style={styles.logoutButton} onClick={handleLogout}>
