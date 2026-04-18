@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "./api";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -24,15 +25,25 @@ function Login() {
     try {
       setLoading(true);
 
-      const response = await axios.post("/api/users/login", formData);
+      const response = await api.post("/api/users/login", formData);
 
       localStorage.setItem("token", response.data.token);
 
       alert("Login successful!");
       navigate("/home");
     } catch (error) {
-      console.error(error);
-      alert("Invalid credentials");
+       console.error("Login error:", error);
+  console.error("error.response:", error.response);
+  console.error("error.request:", error.request);
+  console.error("error.message:", error.message);
+
+  if (error.response) {
+    alert(`Server responded: ${error.response.status}`);
+  } else if (error.request) {
+    alert("Request was made but no response came back. Likely CORS or backend URL issue.");
+  } else {
+    alert(`Request setup failed: ${error.message}`);
+  }
     } finally {
       setLoading(false);
     }
