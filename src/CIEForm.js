@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import EmailSearchDropdown from "./EmailSearchDropdown";
 import "./Employee.css";
 import api from "./api";
