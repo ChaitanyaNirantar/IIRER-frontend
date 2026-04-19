@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import "./Employee.css";
+import api from "./api";
 
 const EmployeeForm = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const EmployeeForm = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("/api/users", {
+      const response = await api.post("/api/users", {
         ...formData,
         salary: parseFloat(formData.salary)
       });
