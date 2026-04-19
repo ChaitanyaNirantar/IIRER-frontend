@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import EmailSearchDropdown from "./EmailSearchDropdown";
 import "./Employee.css";
+import api from "./api";
 
 function DRSClosureForm() {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -42,7 +43,7 @@ function DRSClosureForm() {
 
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/drsclosure", payload);
+      const response = await api.post("/api/users/drsclosure", payload);
       console.log("DRS Closure Response:", response.data);
       alert("DRS Closure submitted successfully!");
 
