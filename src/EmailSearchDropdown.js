@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+//import axios from "axios";
 import "./Employee.css";
+import api from "./api";
 
 function EmailSearchDropdown({ onUserSelect }) {
   const [query, setQuery] = useState("");
@@ -21,7 +22,7 @@ function EmailSearchDropdown({ onUserSelect }) {
 
   const fetchUsers = async (input) => {
     try {
-      const response = await axios.get("/api/users/search", {
+      const response = await api.get("/api/users/search", {
         params: { email: input },
       });
       setResults(response.data);
