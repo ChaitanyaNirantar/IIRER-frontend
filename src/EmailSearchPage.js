@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
+//import axios from "axios";
 import EmailSearchDropdown from "./EmailSearchDropdown";
 import "./Employee.css";
+import api from "./api";
 
 function EmailSearchPage() {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -25,7 +26,7 @@ function EmailSearchPage() {
 
     try {
       setLoading(true);
-      const response = await axios.post("/api/users/newvrservice", payload);
+      const response = await api.post("/api/users/newvrservice", payload);
       console.log("VR Service Response:", response.data);
       alert("VR Service submitted successfully!");
       setVrService("");
