@@ -7,6 +7,7 @@ import DRSClosureForm from "./DRSClosureForm";
 import CIEForm from "./CIEForm";
 import EmailSearchPage from "./EmailSearchPage";
 import PdfUploadPage from "./PdfUploadPage";
+import Signup from "./Signup";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/cie-form" element={<CIEForm />} />
         <Route path="/drs-closure" element={<DRSClosureForm />} />
         <Route path="/pdf-upload" element={<PdfUploadPage />} />
+        <Route path="/Signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

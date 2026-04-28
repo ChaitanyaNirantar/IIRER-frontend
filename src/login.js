@@ -92,12 +92,20 @@ function Login() {
             </div>
 
             <button
-              type="submit"
-              disabled={loading}
-              style={loading ? styles.buttonDisabled : styles.button}
-            >
-              {loading ? "Logging in..." : "Login"}
-            </button>
+  type="submit"
+  disabled={loading}
+  style={loading ? styles.buttonDisabled : styles.button}
+>
+  {loading ? "Logging in..." : "Login"}
+</button>
+
+<button
+  type="button"
+  onClick={() => navigate("/signup")}
+  style={styles.secondaryButton}
+>
+  Create New Account
+</button>
           </form>
         </div>
       </div>
@@ -109,19 +117,20 @@ const styles = {
   page: {
     minHeight: "100vh",
     width: "100%",
-    margin: 0,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "linear-gradient(135deg, #13294B 0%, #1f3b63 55%, #FF5F05 100%)",
-    fontFamily: "Arial, sans-serif"
+    background:
+      "linear-gradient(135deg, #13294B 0%, #1f3b63 55%, #FF5F05 100%)",
+    fontFamily: "Arial, sans-serif",
+    padding: "24px",
+    boxSizing: "border-box"
   },
   overlay: {
     width: "100%",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    padding: "24px"
+    alignItems: "center"
   },
   card: {
     width: "100%",
@@ -130,7 +139,8 @@ const styles = {
     borderRadius: "18px",
     boxShadow: "0 12px 30px rgba(0, 0, 0, 0.18)",
     padding: "0 32px 32px 32px",
-    overflow: "hidden"
+    overflow: "hidden",
+    boxSizing: "border-box"
   },
   topBar: {
     height: "12px",
@@ -162,11 +172,14 @@ const styles = {
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "18px"
+    gap: "18px",
+    width: "100%",
+    boxSizing: "border-box"
   },
   fieldGroup: {
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    width: "100%"
   },
   label: {
     marginBottom: "8px",
@@ -175,14 +188,16 @@ const styles = {
     color: "#13294B"
   },
   input: {
+    width: "100%",
     padding: "12px 14px",
     borderRadius: "10px",
     border: "1px solid #cbd5e0",
     fontSize: "15px",
     outline: "none",
-    transition: "0.2s ease"
+    boxSizing: "border-box"
   },
   button: {
+    width: "100%",
     marginTop: "8px",
     padding: "13px 16px",
     border: "none",
@@ -192,9 +207,11 @@ const styles = {
     fontSize: "16px",
     fontWeight: "700",
     cursor: "pointer",
-    boxShadow: "0 6px 14px rgba(255, 95, 5, 0.25)"
+    boxShadow: "0 6px 14px rgba(255, 95, 5, 0.25)",
+    boxSizing: "border-box"
   },
   buttonDisabled: {
+    width: "100%",
     marginTop: "8px",
     padding: "13px 16px",
     border: "none",
@@ -203,7 +220,19 @@ const styles = {
     color: "#ffffff",
     fontSize: "16px",
     fontWeight: "700",
-    cursor: "not-allowed"
+    cursor: "not-allowed",
+    boxSizing: "border-box"
+  },
+  secondaryButton: {
+    width: "100%",
+    padding: "12px",
+    border: "1px solid #13294B",
+    borderRadius: "10px",
+    backgroundColor: "#ffffff",
+    color: "#13294B",
+    fontWeight: "700",
+    cursor: "pointer",
+    boxSizing: "border-box"
   }
 };
 
