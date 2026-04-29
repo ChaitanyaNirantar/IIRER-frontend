@@ -20,16 +20,17 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       setLoading(true);
 
-      await api.post("/api/users/v1/login", formData);
+      const response = await api.post("/api/users/login", formData);
 
-      alert("OTP sent to your email");
+      localStorage.setItem("token", response.data.token);
 
-      navigate("/otppage", {
-        state: { email: formData.email }
-      });
+      alert("Login successful!");
+
+      navigate("/home");
     } catch (error) {
       console.error("Login error:", error);
 
@@ -93,7 +94,7 @@ function Login() {
               disabled={loading}
               style={loading ? styles.buttonDisabled : styles.button}
             >
-              {loading ? "Sending OTP..." : "Login"}
+              {loading ? "Logging in..." : "Login"}
             </button>
 
             <button
