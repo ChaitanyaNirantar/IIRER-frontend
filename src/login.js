@@ -20,29 +20,26 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       setLoading(true);
 
-      const response = await api.post("/api/users/login", formData);
+      await api.post("/api/users/v1/login", formData);
 
-      localStorage.setItem("token", response.data.token);
+      alert("OTP sent to your email");
 
-      alert("Login successful!");
-      navigate("/home");
+      navigate("/otppage", {
+        state: { email: formData.email }
+      });
     } catch (error) {
-       console.error("Login error:", error);
-  console.error("error.response:", error.response);
-  console.error("error.request:", error.request);
-  console.error("error.message:", error.message);
+      console.error("Login error:", error);
 
-  if (error.response) {
-    alert(`Server responded: ${error.response.status}`);
-  } else if (error.request) {
-    alert("Request was made but no response came back. Likely CORS or backend URL issue.");
-  } else {
-    alert(`Request setup failed: ${error.message}`);
-  }
+      if (error.response) {
+        alert(error.response.data || `Server responded: ${error.response.status}`);
+      } else if (error.request) {
+        alert("Request was made but no response came back. Check CORS or backend URL.");
+      } else {
+        alert(`Request setup failed: ${error.message}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -92,20 +89,20 @@ function Login() {
             </div>
 
             <button
-  type="submit"
-  disabled={loading}
-  style={loading ? styles.buttonDisabled : styles.button}
->
-  {loading ? "Logging in..." : "Login"}
-</button>
+              type="submit"
+              disabled={loading}
+              style={loading ? styles.buttonDisabled : styles.button}
+            >
+              {loading ? "Sending OTP..." : "Login"}
+            </button>
 
-<button
-  type="button"
-  onClick={() => navigate("/signup")}
-  style={styles.secondaryButton}
->
-  Create New Account
-</button>
+            <button
+              type="button"
+              onClick={() => navigate("/signup")}
+              style={styles.secondaryButton}
+            >
+              Create New Account
+            </button>
           </form>
         </div>
       </div>
